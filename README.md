@@ -1,8 +1,8 @@
 # College Inventory Management
 
-database
-Welcome page
-borrow items 
-view inventory with category 
-category
-products
+database </br>
+Welcome page </br>
+borrow items </br>
+view inventory with category </br>
+category </br>
+products </br>
