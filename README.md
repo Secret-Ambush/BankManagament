@@ -1,5 +1,5 @@
 # BankManagament
-
+<p>
 login page for existing user and create account 
 view balance 
 deposit money
@@ -9,3 +9,4 @@ banking statement
 about us
 transfer money(optional)
 loans(optional)
+</p>
