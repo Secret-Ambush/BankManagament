@@ -1,12 +1,12 @@
 # BankManagament
-<p>
-login page for existing user and create account 
-view balance 
-deposit money
-withdraw money
-account details and update
-banking statement
-about us
-transfer money(optional)
-loans(optional)
-</p>
+\
+
+login page for existing user and create account <br/>
+view balance <br/>
+deposit money<br/>
+withdraw money<br/>
+account details and update<br/>
+banking statement<br/>
+about us<br/>
+transfer money(optional)<br/>
+loans(optional)<br/>
