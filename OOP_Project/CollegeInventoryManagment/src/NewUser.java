@@ -1,25 +1,30 @@
 import java.awt.EventQueue;
-
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 import javax.swing.JList;
 import javax.swing.JRadioButton;
-import java.awt.Font;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import java.awt.Color;
 
 public class NewUser extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField name;
+	private JTextField password;
+	private JTextField repassword;
 
 	/**
 	 * Launch the application.
@@ -47,10 +52,10 @@ public class NewUser extends JFrame {
 		lblName.setBounds(48, 71, 52, 16);
 		contentPane.add(lblName);
 		
-		textField = new JTextField();
-		textField.setBounds(174, 66, 232, 26);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		name = new JTextField();
+		name.setBounds(174, 66, 232, 26);
+		contentPane.add(name);
+		name.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("New User");
 		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.BOLD, 15));
@@ -70,19 +75,19 @@ public class NewUser extends JFrame {
 		lblPassword.setBounds(48, 115, 59, 16);
 		contentPane.add(lblPassword);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(174, 110, 232, 26);
-		contentPane.add(textField_1);
+		password = new JTextField();
+		password.setColumns(10);
+		password.setBounds(174, 110, 232, 26);
+		contentPane.add(password);
 		
 		JLabel lblReenterPassword = new JLabel("Re-enter Password");
 		lblReenterPassword.setBounds(48, 161, 118, 16);
 		contentPane.add(lblReenterPassword);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(174, 156, 232, 26);
-		contentPane.add(textField_2);
+		repassword = new JTextField();
+		repassword.setColumns(10);
+		repassword.setBounds(174, 156, 232, 26);
+		contentPane.add(repassword);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
@@ -93,16 +98,37 @@ public class NewUser extends JFrame {
 		JButton btnNewButton = new JButton("Create");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String password1 = textField_1.getText();
-				String password2 = textField_2.getText();
-				if (password2.equals(password1))
+				String password1 = password.getText();
+				String password2 = repassword.getText();
+				String username = name.getText();
+				String msg = "" + username;
+				if (!password2.equals(password1))
 				{
-					Menu a = new Menu();
-					a.showMenu();
+					lblNewLabel.setText("Incorrect Pasword. Try again");	
 				}
 				else
 				{
-					lblNewLabel.setText("Incorrect Pasword. Try again");
+					//Menu a = new Menu();
+					//a.showMenu();
+					try {
+						Class.forName("com.mysql.jdbc.Driver");
+	                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Login", "root", "Somjoy01$");
+
+	                    String query = "INSERT INTO account values('" + username + "','" + password1 + "')";
+
+	                    Statement sta = connection.createStatement();
+	                    int x = sta.executeUpdate(query);
+	                    if (x == 0) {
+	                        JOptionPane.showMessageDialog(btnNewButton, "Already exists");
+	                    } else {
+	                        JOptionPane.showMessageDialog(btnNewButton,
+	                            "Welcome, " + msg + "Your account is successfully created");
+	                    }
+	                    connection.close();
+	                } catch (Exception exception) {
+	                    exception.printStackTrace();
+	                }
+					
 				}
 			}
 		});
