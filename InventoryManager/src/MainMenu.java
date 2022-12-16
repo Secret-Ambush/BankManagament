@@ -37,7 +37,7 @@ public class MainMenu extends JFrame {
 	public MainMenu() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1024, 524);
+		setBounds(100, 100, 1027, 576);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 128, 128));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -63,7 +63,8 @@ public class MainMenu extends JFrame {
 		Categories.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			Categories cat = new Categories();
-			cat.CatScreen();
+			cat.show();
+			dispose();
 			}
 		});
 		Categories.setForeground(new Color(0, 128, 128));
@@ -90,7 +91,8 @@ public class MainMenu extends JFrame {
 		View.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ViewInventory view = new ViewInventory();
-		           view.ViewInv();  
+		           view.show();  
+		           dispose();
 			}
 		});
 		View.setBackground(new Color(128, 255, 128));
@@ -104,6 +106,7 @@ public class MainMenu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				AboutUs about = new AboutUs();
 		           about.show();
+		           dispose();
 		           
 				
 			}

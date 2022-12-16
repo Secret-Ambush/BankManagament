@@ -138,6 +138,7 @@ public class signup extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				MainMenu mm = new MainMenu();
 				mm.show();
+				dispose();
 				
 				
 			}

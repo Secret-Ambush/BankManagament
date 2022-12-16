@@ -125,6 +125,7 @@ public class AboutUs extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				MainMenu mm1=new MainMenu();
 				mm1.show();
+				dispose();
 			}
 		});
 		mainmenubtn.setForeground(new Color(0, 128, 128));

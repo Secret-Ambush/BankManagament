@@ -63,7 +63,7 @@ public class Categories extends JFrame {
 	@SuppressWarnings("unused")
 	public Categories() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 953, 515);
+		setBounds(100, 100, 955, 850);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 128, 128));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -199,6 +199,7 @@ public class Categories extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				MainMenu mm2=new MainMenu();
 				mm2.show();
+				dispose();
 			}
 		});
 		mainmenubtn.setForeground(new Color(0, 128, 128));
